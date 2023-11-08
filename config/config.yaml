@@ -1,0 +1,17 @@
+mode: group # group or regression model- only group is supported at the moment.
+dss_cntr: "/path/to/singularity.sif"
+gtarget: autosome # autosome, sex, or wgs
+tech: ont # hifi or ont
+
+manifest: config/manifest.tab
+
+dss_exclude_regions: "/path/to/lc.bed.gz"
+dss_min_mod: 0
+
+annotations:
+    cpg_island: ""
+    genes: ""
+
+# please make sure all keys are strings
+group_target:
+    "one": "sample_one"
