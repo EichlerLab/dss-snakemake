@@ -8,7 +8,6 @@ configfile: master_snakefile_prefix + "/config/config.yaml"
 
 
 if os.path.exists("config/config.yaml"):
-
     configfile: "config/config.yaml"
 
 
