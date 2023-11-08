@@ -41,6 +41,7 @@ annotations:
 # each key (e.g. one) corresponds to the name in the manifest under group and purpose explained in next section 
 group_target:
     "one": "sample_child"
+    "another_one": "sample_child_hap2;sample_child_hap1" # another example of if you want additional target values.
 ```
 The purpose group target is to target the sample within a group and exclude any pairs that does not contain target sample. For example:
 ```shell
