@@ -1,18 +1,3 @@
-def get_dss_input(wildcards):
-    print(wildcards.sampleA)
-    print(wildcards.sampleB)
-    print(
-        [
-            f"results/mCG/{tech}/{gtarget}_{wildcards.sampleA}.txt",
-            f"results/mCG/{tech}/{gtarget}_{wildcards.sampleB}.txt",
-        ]
-    )
-    return [
-        f"results/mCG/{tech}/{gtarget}_{wildcards.sampleA}.txt",
-        f"results/mCG/{tech}/{gtarget}_{wildcards.sampleB}.txt",
-    ]
-
-
 if dss_mode == "group":
 
     rule dss:
@@ -23,7 +8,6 @@ if dss_mode == "group":
                 gtarget=gtarget,
                 tech=tech,
             ),
-            # file_names = get_dss_input
         output:
             dmr="results/{tech}/dss/group_comparison/{group_name}/{gtarget}/{sampleA}_vs_{sampleB}_DMR.tsv",
             dml="results/{tech}/dss/group_comparison/{group_name}/{gtarget}/{sampleA}_vs_{sampleB}_DML.tsv",
