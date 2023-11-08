@@ -30,9 +30,7 @@ if isinstance(config["dss_exclude_regions"], str):
 
 rule dss_prepare_in_txt:
     input:
-        bed=get_meth_bed
-        if not will_exclude_regions
-        else rules.exclude_regions.output.excluded_regions,
+        bed=get_meth_bed if not will_exclude_regions else rules.exclude_regions.output.excluded_regions,
     output:
         bed=temp("results/mCG/{tech}/{gtarget}_{sample}.txt"),
     params:
