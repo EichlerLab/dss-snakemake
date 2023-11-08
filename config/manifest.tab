@@ -1,2 +1,4 @@
 sample_name	bed	group
-sample_one	sample_one_cpg-pileup.bed.gz	one
+sample_father	sample_father_cpg-pileup.bed.gz	one
+sample_mother	sample_mother_cpg-pileup.bed.gz	one
+sample_child	sample_child_cpg-pileup.bed.gz	one

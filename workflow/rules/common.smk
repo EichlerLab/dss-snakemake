@@ -89,20 +89,22 @@ def get_anno_dict(wildcards):
 
 def get_dss_summaries(wildcards):
     # Target pattern
-    fp = "results/{tech}/dss/group_comparison/{group_name}/{gtarget}/temp/{sample}-{{sampleA}}_vs_{{sampleB}}_DMR.tsv"
+    fp = "results/{tech}/dss/group_comparison/{group_name}/{gtarget}/temp/{sample}-{sampleA}_vs_{sampleB}_DMR.tsv"
     targets = []
 
-    pairs, grouped_df = get_group_pairs(group_name=wildcards.group_name)
+    _, grouped_df = get_group_pairs(group_name=wildcards.group_name)
 
     for entry in grouped_df.itertuples():
-        for a, b in pairs:
-            targets.append(
-                fp.format(
-                    tech=wildcards.tech,
-                    group_name=entry.group,
-                    gtarget=wildcards.gtarget,
-                    sample=entry.sample_name,
-                )
+        targets.append(
+            fp.format(
+                tech=wildcards.tech,
+                group_name=entry.group,
+                gtarget=wildcards.gtarget,
+                sample=entry.sample_name,
+                sampleA=wildcards.sampleA,
+                sampleB=wildcards.sampleB
             )
+        )
+    print(targets)
 
     return targets
