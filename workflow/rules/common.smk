@@ -78,8 +78,12 @@ def get_group_pairs(group_name) -> (list[tuple], pd.DataFrame):
     grouped_df = df.query(rf"group == '{group_name}'")
     pairs = list(itertools.combinations(grouped_df.sample_name.values, 2))
     if target_sample:
+        pairs_df = pd.DataFrame.from_records(pairs)
         target_sample = target_sample.split(";")
-        pairs = [ x for x in pairs for y in target_sample if y in x ]
+
+        # Filter the pairs that do not contain any of the targets.
+        pairs = pairs_df[pairs_df.isin(target_sample).sum(axis=1).gt(0)].apply(tuple,axis=1).tolist()
+        del pairs_df
 
     return pairs, grouped_df
 
