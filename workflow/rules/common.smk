@@ -110,6 +110,5 @@ def get_dss_summaries(wildcards):
                 sampleB=wildcards.sampleB
             )
         )
-    print(targets)
 
     return targets
