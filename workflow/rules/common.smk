@@ -49,7 +49,7 @@ def get_final_output(wildcards):
 
 def get_target_chromosomes(wildcards):
     autosomes = ["chr{}".format(x) for x in list(range(1, 23))]
-    sex_chr = ["X", "Y"]
+    sex_chr = ["chrX", "chrY"]
     if wildcards.gtarget == "wgs":
         return "|".join(autosomes + sex_chr)
     elif wildcards.gtarget == "sex":
