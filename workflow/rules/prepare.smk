@@ -14,7 +14,7 @@ if isinstance(config["dss_exclude_regions"], str):
                 ),
             threads: 1
             resources:
-                mem=lambda wildcards, attempt: attempt * 4,
+                mem=calc_mem_gb,
                 hrs=72,
             envmodules:
                 "modules",
@@ -38,7 +38,7 @@ rule dss_prepare_in_txt:
         chromosomes=get_target_chromosomes,
     threads: 1
     resources:
-        mem=lambda wildcards, attempt: attempt * 4,
+        mem=calc_mem_gb,
         hrs=72,
     shell:
         """

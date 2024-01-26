@@ -47,6 +47,15 @@ def get_final_output(wildcards):
     return targets
 
 
+def calc_mem_gb(wildcards, input, attempt, threads):
+    mb = max(1.5 * input.size_mb, 1000)
+    gb = int(mb / 1000)
+
+    if threads != 1:
+        gb = int(max(gb / threads, 2))
+
+    return gb * attempt
+
 def get_target_chromosomes(wildcards):
     autosomes = ["chr{}".format(x) for x in list(range(1, 23))]
     sex_chr = ["chrX", "chrY"]
